@@ -1,18 +1,18 @@
-import { balance } from "./actions/balance";
-import { owner } from "./actions/owner";
-import { transfer } from "./actions/transfer";
+import { balance } from "./actions/owner"
+import { registerBrand } from "./actions/brand"
+import { transfer } from "./actions/transferUTokens"
 
 export async function handle(state, action) {
-  const input = action.input;
+  const input = action.input
 
   switch (input.function) {
-    case "owner":
-      return owner(state, action);
-    case "balance":
-      return balance(state, action);
-    case "transfer":
-      return transfer(state, action);
+    case "registerBrand":
+      return registerBrand(state, action)
+    case "users":
+      return users(state, action)
     default:
-      throw new ContractError(`No function supplied or function not recognized: "${input.function}"`);
+      throw new ContractError(
+        `No function supplied or function not recognized: "${input.function}"`
+      )
   }
 }

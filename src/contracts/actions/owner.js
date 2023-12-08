@@ -1,3 +1,7 @@
 export function owner(state, action) {
-  return { result: state.owner };
+  if (action.type === "initialise") {
+    state.owner = action.payload.owner
+  }
+
+  return state
 }
